@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Information</title>
+</head>
+<body>
+	<h1>Add New Student Info</h1>
+	<form action="saveStudent" method="post">
+		<table>
+			<tr>
+				<td>Roll Number:</td>
+				<td><input type="text" name="roll" required/></td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="name" required/></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2"><input type="submit" value="Save Student" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<br />
+	<a href="viewStudentList">view Student List</a>
+</body>
+</html>
