@@ -20,28 +20,28 @@ public class ViewStudentList extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		List<Student> studentList = new ArrayList<>();
-		response.setContentType("text/html");  
-		 
-	     PrintWriter printWriter = response.getWriter();  
-	     printWriter.println("<a href='index.html'>Add New Student Info</a>");  
-	     printWriter.println("<h1>Student Info List</h1>");  
-	       
+		response.setContentType("text/html");
+
+		PrintWriter printWriter = response.getWriter();
+		printWriter.println("<a href='index.html'>Add New Student Info</a>");
+		printWriter.println("<h1>Student Info List</h1>");
+
 		try {
-			studentList = StudentUtil.getAllStudents() ;
+			studentList = StudentUtil.getAllStudents();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}  
-	    
-	     printWriter.print("<table border='1' width='100%'>");  
-	     printWriter.print("<tr><th>Name</th><th>Roll</th><th>Operation</th></tr>");  
-	     
-	     for(Student student : studentList){  
-	    	 printWriter.print("<tr><td>"+student.getName()+"</td><td>"+student.getRoll() +  
-	             "</td> <td><a href='deleteServlet?id="+student.getRoll()+"'>delete</a></td></tr>");  
-	     }  
-	     
-	     printWriter.print("</table>");  
-	       
-	     printWriter.close();  
+		}
+
+		printWriter.print("<table border='1' width='100%'>");
+		printWriter.print("<tr><th>Name</th><th>Roll</th><th>Operation</th></tr>");
+
+		for (Student student : studentList) {
+			printWriter.print("<tr><td>" + student.getName() + "</td><td>" + student.getRoll()
+					+ "</td> <td><a href='deleteServlet?id=" + student.getRoll() + "'>delete</a></td></tr>");
+		}
+
+		printWriter.print("</table>");
+
+		printWriter.close();
 	}
 }

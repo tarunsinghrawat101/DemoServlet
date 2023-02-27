@@ -15,36 +15,35 @@ import util.StudentUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/saveStudent")
-public class SaveStudent extends HttpServlet{
-	
+public class SaveStudent extends HttpServlet {
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
-		response.setContentType("text/html");  
-	        PrintWriter printWriter = response.getWriter();  
-	          
-	        String name=request.getParameter("name");  
-	        int roll=Integer.parseInt(request.getParameter("roll"));
-	       
-	        Student student=new Student();  
-	        student.setName(name);  
-	        student.setRoll(roll);  
-	        
-	          
-	        int status = 0;
-			try {
-				status = StudentUtil.save(student);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}  
-	        if(status >0){  
-	        	printWriter.print("<p>Record saved successfully!</p>");  
-	        	
-	            request.getRequestDispatcher("index.html").include(request, response);  
-	        }else{  
-	        	printWriter.println("Sorry! unable to save record");  
-	        }  
-	          
-	        printWriter.close();  
+
+		response.setContentType("text/html");
+		PrintWriter printWriter = response.getWriter();
+
+		String name = request.getParameter("name");
+		int roll = Integer.parseInt(request.getParameter("roll"));
+
+		Student student = new Student();
+		student.setName(name);
+		student.setRoll(roll);
+
+		int status = 0;
+		try {
+			status = StudentUtil.save(student);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (status > 0) {
+			printWriter.print("<p>Record saved successfully!</p>");
+
+			request.getRequestDispatcher("index.html").include(request, response);
+		} else {
+			printWriter.println("Sorry! unable to save record");
+		}
+
+		printWriter.close();
 	}
 }
