@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.StudentDao;
+import util.StudentUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/deleteServlet")
@@ -17,7 +17,7 @@ public class DeleteStudent extends HttpServlet {
 		
 		int roll = Integer.parseInt(request.getParameter("id"));
 		try {
-			StudentDao.delete(roll);
+			StudentUtil.delete(roll);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

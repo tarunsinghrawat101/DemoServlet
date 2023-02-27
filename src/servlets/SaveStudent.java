@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.StudentDao;
 import model.Student;
+import util.StudentUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/saveStudent")
@@ -32,7 +32,7 @@ public class SaveStudent extends HttpServlet{
 	          
 	        int status = 0;
 			try {
-				status = StudentDao.save(student);
+				status = StudentUtil.save(student);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

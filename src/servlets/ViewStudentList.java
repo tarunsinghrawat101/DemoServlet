@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.StudentDao;
 import model.Student;
+import util.StudentUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/viewStudentList")
@@ -27,7 +27,7 @@ public class ViewStudentList extends HttpServlet {
 	     printWriter.println("<h1>Student Info List</h1>");  
 	       
 		try {
-			studentList = StudentDao.getAllStudents() ;
+			studentList = StudentUtil.getAllStudents() ;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}  

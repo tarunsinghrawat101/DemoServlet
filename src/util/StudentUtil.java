@@ -1,6 +1,5 @@
-package dao;
+package util;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +11,7 @@ import java.util.List;
 import model.Student;
 
 
-public class StudentDao {
+public class StudentUtil {
 	//private static Student student;
 	public static Connection connection() {
 		
@@ -29,7 +28,7 @@ public class StudentDao {
 	
 	public static int save(Student student) throws SQLException {
 		int saveStatus = 0;
-		Connection connection = StudentDao.connection();
+		Connection connection = StudentUtil.connection();
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				"insert into studentInfo() values(?,?)");
 		preparedStatement.setString(1,  student.getName());
@@ -43,7 +42,7 @@ public class StudentDao {
 	
 	public static int delete(int roll) throws SQLException {
 		int deleteStatus = 0;
-		Connection connection = StudentDao.connection();
+		Connection connection = StudentUtil.connection();
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				"delete from studentInfo where rollno = ?");
 		preparedStatement.setLong(1,  roll);
@@ -59,7 +58,7 @@ public class StudentDao {
 		Student student = new Student();
 		List<Student> studentList = new ArrayList<Student>();
 		
-		Connection connection = StudentDao.connection();
+		Connection connection = StudentUtil.connection();
 		PreparedStatement preparedStatement = connection.prepareStatement(
 				"select * from studentInfo");
 		ResultSet resultSet = preparedStatement.executeQuery();
