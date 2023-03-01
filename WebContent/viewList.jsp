@@ -24,9 +24,7 @@
 			</tr>
 		</thead>
 		<tbody>
-
-			<%-- <%=session.getAttribute("studentList")%> --%>
-			<%=eList %>
+			<%-- <%=eList %> --%>
 			<c:forEach items="${eList}" var="student">
 				<tr>
 					<td><c:out value="${student.name}" /></td>
@@ -60,13 +58,6 @@
 					}
 				%>
 			</tr> --%>
-			<%-- 	<tr>
-					<td>${studentList.name}/></td>
-					<td>${studentList.roll}/></td>
-					<td><a href="deleteServlet?id=" + ${studentList.rollno}>delete </a></td>
-					<td><a href="updateRecord.jsp?roll=" + ${studentList.rollno}>update
-					</a></td>
-				</tr> --%>
 		</tbody>
 	</table>
 
