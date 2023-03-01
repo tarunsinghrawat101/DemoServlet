@@ -15,7 +15,7 @@
 <body>
 	<a href='index.html'>Add New Student Info</a>
 	<h1>Student Info List</h1>
-	<table border='1' style = "width: 100%">
+	<table border='1' width='100%'>
 		<thead>
 			<tr>
 				<th>Name</th>
