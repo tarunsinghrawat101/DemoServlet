@@ -14,13 +14,14 @@ import util.StudentUtil;
 @WebServlet("/deleteServlet")
 public class DeleteStudent extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-		int roll = Integer.parseInt(request.getParameter("roll"));
-		try {
-			StudentUtil.delete(roll);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (request.getParameter("roll") != "") {
+			int roll = Integer.parseInt(request.getParameter("roll"));
+			try {
+				StudentUtil.delete(roll);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		response.sendRedirect("viewStudentList");

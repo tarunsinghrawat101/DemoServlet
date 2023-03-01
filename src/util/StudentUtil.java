@@ -68,7 +68,7 @@ public class StudentUtil {
 	}
 
 	public static List<Student> getAllStudents() throws SQLException {
-		Student student = new Student();
+		//Student student = new Student();
 		List<Student> studentList = new ArrayList<Student>();
 
 		Connection connection = StudentUtil.connection();
@@ -79,10 +79,11 @@ public class StudentUtil {
 		try {
 			if (resultSet != null) {
 				while (resultSet.next()) {
+					Student student = new Student();
 
 					student.setName(resultSet.getString(1));
 					student.setRoll(resultSet.getInt(2));
-
+					
 					studentList.add(student);
 				}
 			}

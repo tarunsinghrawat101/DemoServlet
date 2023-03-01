@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Student Information</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<h1>Add New Student Info</h1>
@@ -10,11 +12,12 @@
 		<table>
 			<tr>
 				<td>Roll Number:</td>
-				<td><input type="text" name="roll" pattern = "^[0-9]*$" required /></td>
+				<td><input type="text" name="roll" pattern="^[0-9]*$" required /></td>
 			</tr>
 			<tr>
 				<td>Name:</td>
-				<td><input type="text" name="name" pattern = "^[ A-Za-z]+$" required /></td>
+				<td><input type="text" name="name" pattern="^[ A-Za-z]+$"
+					required /></td>
 			</tr>
 
 			<tr>
@@ -22,7 +25,6 @@
 			</tr>
 		</table>
 	</form>
-
 	<br />
 	<a href="viewStudentList">view Student List</a>
 </body>

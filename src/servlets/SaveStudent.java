@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Student;
 import util.StudentUtil;
@@ -23,6 +24,7 @@ public class SaveStudent extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int status = 0;
+		HttpSession session = request.getSession();
 
 		String rollNoRegex = "^[0-9]*$";
 		String nameRegex = "^[ A-Za-z]+$";
@@ -32,7 +34,7 @@ public class SaveStudent extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String roll = request.getParameter("roll");
-//		System.out.println("ROLL NUMBER: " + roll);
+
 		Pattern rollNoCheck = Pattern.compile(rollNoRegex);
 		Matcher rollNoMatcher = rollNoCheck.matcher(roll);
 
@@ -40,10 +42,12 @@ public class SaveStudent extends HttpServlet {
 		if (name != "") {
 			Pattern nameCheck = Pattern.compile(nameRegex);
 			nameMatcher = nameCheck.matcher(name);
+			session.setAttribute("name", name);
 
 		} else {
-			printWriter.print("<p>Name cannot be null</p>");
-			request.getRequestDispatcher("index.html").include(request, response);
+			// printWriter.print("<p>Name cannot be null</p>");
+			session.setAttribute("name", "");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 
 		int rollNo = Integer.parseInt(roll);
@@ -58,13 +62,7 @@ public class SaveStudent extends HttpServlet {
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				/*
-				 * if(e.getErrorCode() == 1062) { try { status = StudentUtil.update(name,
-				 * rollNo); } catch (SQLException e1) { // TODO Auto-generated catch block
-				 * e1.printStackTrace(); } }
-				 */
-				printWriter.print("<p>Roll Number already exists!</p>");
-				request.getRequestDispatcher("index.html").include(request, response);
+				status = 0;
 				e.printStackTrace();
 			}
 		} else {
@@ -73,14 +71,17 @@ public class SaveStudent extends HttpServlet {
 
 		if (status > 0) {
 			printWriter.print("<p>Record saved successfully!</p>");
-			request.getRequestDispatcher("index.html").include(request, response);
+			request.getRequestDispatcher("index.jsp").include(request, response);
 
-		} else if (status == -1) {
+		} else if(status == 0){
+			printWriter.print("<p>Roll Number already exists!</p>");
+			request.getRequestDispatcher("index.jsp").include(request, response);
+		}else {
 			printWriter.print("<p>Sorry! unable to save record due to invalid Roll No or Student Name</p>");
-			request.getRequestDispatcher("index.html").include(request, response);
+			request.getRequestDispatcher("index.jsp").include(request, response);
 
-		}
-
+		} 
+		
 		printWriter.close();
 	}
 }

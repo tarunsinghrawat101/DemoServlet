@@ -21,22 +21,18 @@ import util.StudentUtil;
 public class ViewStudentList extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		
+
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
+
 		try {
 			List<Student> studentList = new ArrayList<>();
 			studentList = StudentUtil.getAllStudents();
-			for(Student student: studentList) {
-				System.out.println("name: " + student.getName());
-				System.out.println("name: " + student.getRoll());
-			}
 			session.setAttribute("studentList", studentList);
-			System.out.println("Session: " + session.getAttribute("studentList"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		request.getRequestDispatcher("viewList.jsp").forward(request, response);
 	}
 }

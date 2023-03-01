@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,6 @@
 	<br />
 	<a href="viewStudentList">view Student List</a>
 	<br />
-	<a href="index.html">Add new Student</a>
+	<a href="index.jsp">Add new Student</a>
 </body>
 </html>

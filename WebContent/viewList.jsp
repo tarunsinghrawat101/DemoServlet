@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<a href='index.html'>Add New Student Info</a>
+	<a href='index.jsp'>Add New Student Info</a>
 	<h1>Student Info List</h1>
 	<table border='1' style="width: 100%">
 		<thead>
@@ -27,20 +27,19 @@
 				System.out.println("Student List : " + list);
 			%>
 			<%
-				for (Student u : list) {
-					int roll = u.getRoll();
+				for (Student student : list) {
+					int roll = student.getRoll();
 			%>
 			<tr>
 				<%-- <td><%=i++%></td>  --%>
-				<td><%=u.getName()%></td>
-				<td><%=u.getRoll()%></td>
-				<td><a href="deleteServlet?roll=<%=u.getRoll()%>" />Delete
-					&emsp;<a
-						href="updateRecord.jsp?roll=<%=u.getRoll()%>" />Update</td>
-			</tr> 
+				<td><%=student.getName()%></td>
+				<td><%=student.getRoll()%></td>
+				<td><a href="deleteServlet?roll=<%=student.getRoll()%>" />Delete
+					&emsp; <a href="updateRecord.jsp?roll=<%=student.getRoll()%>" />Update</td>
+			</tr>
 			<%
- 				}
- 			%> 
+				}
+			%>
 		</tbody>
 	</table>
 

@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import util.StudentUtil;
 
 @SuppressWarnings("serial")
@@ -33,7 +35,7 @@ public class UpdateStudentRecord extends HttpServlet {
 
 		} else {
 			printWriter.print("<p>Name cannot be null</p>");
-			request.getRequestDispatcher("index.html").include(request, response);
+			request.getRequestDispatcher("updateRecord.jsp?roll=" + roll).include(request, response);
 		}
 
 		if (nameMatcher.matches()) {
@@ -51,7 +53,7 @@ public class UpdateStudentRecord extends HttpServlet {
 
 		if (status > 0) {
 			printWriter.print("<p>Record saved successfully!</p>");
-			request.getRequestDispatcher("index.html").include(request, response);
+			request.getRequestDispatcher("index.jsp").include(request, response);
 
 		} else if (status == -1) {
 			printWriter.print("<p>Sorry! unable to save record due to invalid Roll No or Student Name</p>");
