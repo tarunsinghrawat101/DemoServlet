@@ -8,14 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%
-	List<Student> eList = (List<Student>) session.getAttribute("studentList");
-%>
+
 </head>
 <body>
 	<a href='index.html'>Add New Student Info</a>
 	<h1>Student Info List</h1>
-	<table border='1' width='100%'>
+	<table border='1' style = "width: 100%">
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -24,29 +22,44 @@
 			</tr>
 		</thead>
 		<tbody>
-
-			<%-- <%=session.getAttribute("studentList")%> --%>
-			<%=eList %>
-			<c:forEach items="${eList}" var="student">
+		<%
+	List<Student> list = (List<Student>) session.getAttribute("studentList");
+System.out.println("Student List : "+list);
+%>
+<% 
+				for (Student u : list) { 
+			%> 
+			<tr> 
+				<%-- <td><%=i++%></td>  --%>
+				<td><%=u.getName()%></td> 
+				<td><%=u.getRoll()%></td> 
+				<td><a href=deleteServlet?roll= <%=u.getRoll()%> />Delete</td> 
+				<td><a href=updateRecord.jsp?roll= <%=u.getRoll()%> />Update</td>
+			</tr> 
+			<% 
+				} 
+			%> 
+		<%-- <%=eList %> --%>
+			<%-- <c:forEach items="${eList}" var="student">
 				<tr>
 					<td><c:out value="${student.name}" /></td>
 					<td><c:out value="${student.roll}" /></td>
 					
-					<c:url value="deleteServlet?roll= ${student.rollno}" var="delete">
+					<c:url value="deleteServlet?roll= ${student.roll}" var="delete">
 						<c:param name="roll" value="${deleteEntry}" />
 					</c:url>
 					<td><a href="${delete}"><c:out value="${deleteEntry}" /></a></td>
 					
-					<c:url value="updateRecord.jsp?roll=${student.rollno}" var="update">
+					<c:url value="updateRecord.jsp?roll=${student.roll}" var="update">
 						<c:param name="roll" value="${updateEntry}" />
 					</c:url>
 					<td><a href="${update}"><c:out value="${updateEntry}" /></a></td>
-					<%-- 
+					
 					<td><a href="deleteServlet?roll=" + ${student.rollno}>
 							delete </a> &nbsp; <a href="updateRecord.jsp?roll="
-						+ ${student.rollno}> update</a></td> --%>
+						+ ${student.rollno}> update</a></td>
 				</tr>
-			</c:forEach>
+			</c:forEach> --%>
 			<%-- <tr>
 				
 				<%
@@ -60,13 +73,6 @@
 					}
 				%>
 			</tr> --%>
-			<%-- 	<tr>
-					<td>${studentList.name}/></td>
-					<td>${studentList.roll}/></td>
-					<td><a href="deleteServlet?id=" + ${studentList.rollno}>delete </a></td>
-					<td><a href="updateRecord.jsp?roll=" + ${studentList.rollno}>update
-					</a></td>
-				</tr> --%>
 		</tbody>
 	</table>
 

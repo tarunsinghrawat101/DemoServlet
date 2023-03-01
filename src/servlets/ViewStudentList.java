@@ -23,12 +23,6 @@ public class ViewStudentList extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		response.setContentType("text/html");
-
-		/*
-		 * PrintWriter printWriter = response.getWriter();
-		 * printWriter.println("<a href='index.html'>Add New Student Info</a>");
-		 * printWriter.println("<h1>Student Info List</h1>");
-		 */
 		HttpSession session = request.getSession();
 		try {
 			List<Student> studentList = new ArrayList<>();
@@ -43,22 +37,6 @@ public class ViewStudentList extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		/*
-		printWriter.print("<table border='1' width='100%'>");
-		printWriter.print("<tr><th>Name</th><th>Roll</th><th>Operation</th></tr>");
-
-		
-		 * for (Student student : studentList) { printWriter.print("<tr><td>" +
-		 * student.getName() + "</td><td>" + student.getRoll() +
-		 * "</td> <td><a href='deleteServlet?roll=" + student.getRoll() +
-		 * "'>delete</a></td>" + "<td><a href='updateRecord.jsp?roll="+
-		 * student.getRoll() +"'>update</a></td>" + "</tr>"); }
-		 */
-		
 		request.getRequestDispatcher("viewList.jsp").forward(request, response);
-
-//		printWriter.print("</table>");
-//
-//		printWriter.close();
 	}
 }
