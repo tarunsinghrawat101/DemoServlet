@@ -15,7 +15,7 @@ import util.StudentUtil;
 public class DeleteStudent extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		int roll = Integer.parseInt(request.getParameter("id"));
+		int roll = Integer.parseInt(request.getParameter("roll"));
 		try {
 			StudentUtil.delete(roll);
 		} catch (SQLException e) {
